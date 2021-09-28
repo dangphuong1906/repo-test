@@ -1,0 +1,65 @@
+extends ./layouts/masterpage.pug
+
+block content
+    link(rel="stylesheet", href="/styles/common.css")
+    link(rel="stylesheet", href="/styles/homepage.css")
+    .container
+        .alert.alert-warning(style="") Sản phẩm
+        .alert.alert-warning(style="") Giỏ hàng
+            span.cart-number &nbsp;
+            |   
+        .products.d-flex.flex-row
+            if products
+                each product in products 
+                    .card(style='width: 18rem;')
+                        img.card-img-top(src=product.productLink, alt='')
+                        .card-body
+                        p.card-text
+                            p.product-name=product.productName
+                            p.product-price=product.productPrice
+                            form(action="", method="POST")
+                                .btn.btn-primary.add-cart(id=product.productId) Add Cart
+            //- .card(style='width: 18rem;')
+            //-     img.card-img-top(src='./images/products/aoxanh.jpg', alt='')
+            //-     .card-body
+            //-         p.card-text
+            //-             p.product-name   Combo áo xanh nền
+            //-             p.product-price 295.000đ
+            //- .card(style='width: 18rem;')
+            //-     img.card-img-top(src='./images/products/somiden.jpg', alt='')
+            //-     .card-body
+            //-         p.card-text
+            //-             p.product-name   Áo sơ mi đen
+            //-             p.product-price 295.000đ
+            //- .card(style='width: 18rem;')
+            //-     img.card-img-top(src='./images/products/vayhong.jfif', alt='')
+            //-     .card-body
+            //-         p.card-text
+            //-             p.product-name   Váy hồng
+            //-             p.product-price 295.000đ
+            //- .card(style='width: 18rem;')
+            //-     img.card-img-top(src='./images/products/quanrin.jpg', alt='')
+            //-     .card-body
+            //-         p.card-text
+            //-             p.product-name   Quần rin bó
+            //-             p.product-price 295.000đ 
+    script.    
+        var x = document.getElementsByClassName('add-cart');
+        for (let i = 0; i < x.length; i++) {
+            x[i].addEventListener('click', () => {
+            cartNumbers()
+            })
+        }
+        function cartNumbers() {
+            let productNumbers = localStorage.getItem('cartNumbers');
+            productNumbers = parseInt(productNumbers);
+            if (productNumbers) {
+                localStorage.setItem('cartNumbers', productNumbers + 1);
+                document.querySelector('.cart-number').innerHTML = "&nbsp" + (productNumbers + 1);
+            }
+            else {
+                localStorage.setItem('cartNumbers', 1);
+                document.querySelector('.cart-number').innerHTML = "&nbsp"  + 1;
+            }
+            setItems(product);
+        }

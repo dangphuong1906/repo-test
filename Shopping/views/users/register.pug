@@ -1,0 +1,45 @@
+extends ../layouts/masterpage.pug
+
+
+block content
+    link(rel="stylesheet" href="/styles/register.css")
+    link(rel="stylesheet" href="/styles/common.css")
+    link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+
+
+    // ---- Include the above in your HEAD tag --------
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css' integrity='sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==' crossorigin='anonymous' referrerpolicy='no-referrer')
+
+    .wrapper.fadeInDown
+        #formContent
+            // Tabs Titles
+            // Icon
+            .fadeIn.first
+                span    Register
+            // Login Form
+            form(action="/register", method="POST")
+                input#username.fadeIn.second(type='text' name='username' placeholder='Username' required,
+                 value = (values) ? values.username : "" )
+                input#fullname.fadeIn.second(type='text' name='fullname' placeholder='Fullname' required,
+                 value = (values) ? values.fullname : "" )
+                input#gender.fadeIn.second(type='text' name='gender' placeholder='Gender' required,
+                 value = (values) ? values.gender : "" )
+                input#age.fadeIn.second(type='text' name='age' placeholder='Age' required,
+                 value = (values) ? values.age : "" )
+                input#password.fadeIn.third(type='password' name='password' placeholder='Password' required,
+                 value = (values) ? values.password : "" )
+                input.fadeIn.fourth(type='submit', value="Register")
+
+            if notices
+                each notice in notices
+                    .alert.alert-danger=notice
+                
+            
+            // Remind Passowrd
+            #formFooter
+                a.underlineHover(href='/login') Login
+                br
+

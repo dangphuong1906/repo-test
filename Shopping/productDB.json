@@ -1,0 +1,25 @@
+[{
+        "productId": "a",
+        "productLink": "/images/products/aoxanh.jpg",
+        "productName": "Áo xanh nền đôi",
+        "productPrice": 295000
+    },
+    {
+        "productId": "b",
+        "productLink": "/images/products/somiden.jpg",
+        "productName": "Áo sơ mi đen",
+        "productPrice": 295000
+    },
+    {
+        "productId": "c",
+        "productLink": "/images/products/vayhong.jfif",
+        "productName": "Váy hồng rực rỡ",
+        "productPrice": 295000
+    },
+    {
+        "productId": "d",
+        "productLink": "/images/products/quanrin.jpg",
+        "productName": "Quần rin T215",
+        "productPrice": 295000
+    }
+]
